@@ -1,14 +1,20 @@
 <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
-<div class="teste">
-  opa
+<div *ngIf="top5Music.length != 0" class="container-list">
+  <div class="container-music">
+    <div class="colocacao container">
+      <!-- <span> -->
+        1
+      <!-- </span> -->
+    </div>
+    <div class="container">
+      <img src="{{top5Music[0].thumbnail}}" alt="">
+    </div>
+    <div>
+      <h1>{{top5Music[0].track_title}}</h1>
+      <h2>Artistas: {{top5Music[0].artists[0]}}</h2>
+    </div>
+    <div class="container">
+      <img src="assets/imagens/spotify-logo.png" alt="" class="spotify-logo">
+    </div>
+  </div>
 </div>
-
-<!-- <mat-nav-list onload="buscar()">
-  <div>
-    <img src="{{top5Music[0].thumbnail}}" alt="">
-  </div>
-  <div>
-    <img src="{{top5Music[1].thumbnail}}" alt="">
-  </div>
-
-</mat-nav-list> -->

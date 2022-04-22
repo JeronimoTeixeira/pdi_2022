@@ -9,13 +9,13 @@ export class TopMusicService {
   constructor(private http: HttpClient) { }
 
   topMusicas(){
-    return this.http.get("https://spotfiy-charts.p.rapidapi.com", { params: this.criarParams(), headers: this.criarHeader()})
+    return this.http.get("https://spotify23.p.rapidapi.com/charts/", { params: this.criarParams(), headers: this.criarHeader()})
   }
 
   criarHeader():HttpHeaders {
     return new HttpHeaders()
-    .set('x-rapidapi-host', 'spotfiy-charts.p.rapidapi.com')
-    .set('x-rapidapi-key', '5d4a5005eemshee81e3df75d2502p178b33jsn1dcfe51f1090');
+    .set('X-rapidAPI-Host', 'spotify23.p.rapidapi.com')
+    .set('X-rapidAPI-Key', '5d4a5005eemshee81e3df75d2502p178b33jsn1dcfe51f1090');
   }
 
   criarParams():HttpParams {

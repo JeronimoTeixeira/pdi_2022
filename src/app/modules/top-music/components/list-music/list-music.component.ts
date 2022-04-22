@@ -20,18 +20,17 @@ export class ListMusicComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadingService.show();
-    setTimeout(()=>{
-      this.loadingService.hide();
-    }, 2000)
+    this.buscar();
   }
 
   buscar(){
-    console.log("teste")
+    console.log('Buscar')
+    this.loadingService.show();
     this.topMusicService.topMusicas().subscribe( (data:any) =>{
       this.spinner = false
       this.top5Music = data.content.slice(0, 5);
       console.log(this.top5Music);
+      this.loadingService.hide();
     });
   }
 

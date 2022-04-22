@@ -1,6 +1,28 @@
-
-.teste{
-  height: 100%;
-  width: 100%;
+.container-music{
+  padding: 20px;
+  display: flex;
+  height: 20%;
 }
+
+.container-list{
+  height: 100%;
+}
+
+.container{
+  display: flex;
+  height: 100%;
+}
+
+.colocacao{
+  color: #D7CCD6;
+  font-weight: 900;
+  font-size: 70px;
+  display : flex;
+  align-items : flex-start;
+  justify-content : center;
+
+}
+
+
+
 
