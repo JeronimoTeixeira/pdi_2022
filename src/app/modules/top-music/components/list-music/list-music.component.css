@@ -1,28 +1,18 @@
-.container-music{
-  padding: 20px;
-  display: flex;
-  height: 20%;
-}
 
-.container-list{
-  height: 100%;
-}
-
-.container{
-  display: flex;
-  height: 100%;
-}
-
-.colocacao{
+.text-list-music{
   color: #D7CCD6;
   font-weight: 900;
-  font-size: 70px;
-  display : flex;
-  align-items : flex-start;
-  justify-content : center;
-
+  line-height: 100%;
 }
-
-
-
-
+.text-top{
+  line-height: 100%;
+}
+.colocacao{
+  font-size: 3em;
+}
+.titulo{
+  font-size: 2em;
+}
+.sub-titulo{
+  font-size: 1em;
+}

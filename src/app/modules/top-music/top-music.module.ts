@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListMusicComponent } from './components/list-music/list-music.component';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 export const routes: Routes = [
   { path: '', component: ListMusicComponent},
@@ -18,8 +20,8 @@ export const routes: Routes = [
     HttpClientModule,
     MatListModule,
     MatProgressBarModule,
-
-
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class TopMusicModule { }

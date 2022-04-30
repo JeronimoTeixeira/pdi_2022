@@ -2,3 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  background-color: #370031; }
+/* .mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+} */

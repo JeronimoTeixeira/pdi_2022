@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './shared/components/menu/menu.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

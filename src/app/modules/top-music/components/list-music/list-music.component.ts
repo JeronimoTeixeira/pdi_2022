@@ -11,6 +11,7 @@ export class ListMusicComponent implements OnInit {
   loading = this.loadingService.loading;
   top5Music: Array<any> = [];
   spinner: Boolean = true;
+  breakpoint: Number = 10;
 
   constructor(
     private topMusicService: TopMusicService,
@@ -20,11 +21,11 @@ export class ListMusicComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     this.buscar();
   }
 
   buscar(){
-    console.log('Buscar')
     this.loadingService.show();
     this.topMusicService.topMusicas().subscribe( (data:any) =>{
       this.spinner = false
@@ -32,6 +33,10 @@ export class ListMusicComponent implements OnInit {
       console.log(this.top5Music);
       this.loadingService.hide();
     });
+  }
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 3 : 10;
   }
 
 }

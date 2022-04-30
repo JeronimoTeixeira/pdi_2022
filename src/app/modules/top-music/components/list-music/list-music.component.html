@@ -1,20 +1,21 @@
 <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
-<div *ngIf="top5Music.length != 0" class="container-list">
-  <div class="container-music">
-    <div class="colocacao container">
-      <!-- <span> -->
-        1
-      <!-- </span> -->
+
+<mat-grid-list cols="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+  <mat-grid-tile colspan="1" rowspan="1" class="container-colocacao container">
+    <div style="width: 100%; display: flex; justify-content: flex-end;">
+      <span class="text-list-music colocacao">1</span>
     </div>
-    <div class="container">
-      <img src="{{top5Music[0].thumbnail}}" alt="">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1" class="container-thumbnail container">
+    <img src="{{top5Music[0].thumbnail}}" alt="" >
+  </mat-grid-tile>
+  <mat-grid-tile colspan="5" rowspan="1" class="container-infos container">
+    <div style="display: flex; flex-direction: column; width: 100%; justify-content: flex-start;">
+      <span class="titulo text-top text-list-music">{{top5Music[0].track_title}}</span>
+      <span class="sub-titulo text-top text-list-music">Artistas: {{top5Music[0].artists[0]}}</span>
     </div>
-    <div>
-      <h1>{{top5Music[0].track_title}}</h1>
-      <h2>Artistas: {{top5Music[0].artists[0]}}</h2>
-    </div>
-    <div class="container">
-      <img src="assets/imagens/spotify-logo.png" alt="" class="spotify-logo">
-    </div>
-  </div>
-</div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="1" class="container-spotify container">
+        <img src="assets/imagens/spotify-logo.png" alt="" style="	max-width:50%; height:auto;">
+  </mat-grid-tile>
+</mat-grid-list>
