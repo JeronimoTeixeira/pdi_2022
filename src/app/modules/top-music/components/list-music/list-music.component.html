@@ -1,21 +1,24 @@
 <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
+<div *ngIf="top5Music" style="display: flex; flex-direction: column; justify-content:space-between; margin: 20px;">
+  <mat-grid-list [cols]="breakpoint" rowHeight="150px" *ngFor="let music of top5Music; index as i" (window:resize)="onResize($event)" style="margin-top: 20px; border-bottom: solid black;">
+    <mat-grid-tile colspan="1" *ngIf="visualizaColocacaoLogoSpotify" rowspan="1">
+      <div class="container-colocacao container">
+        <span class="text-list-music colocacao">{{i+1}}</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <img src="{{music.thumbnail}}" alt="" class="thumbnail">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="colSpanInfo" [rowspan]="rowSpanInfo">
+      <div class="container-infos container">
+        <span class="titulo text-top text-list-music">{{music.titulo}}</span>
+        <span class="sub-titulo text-top text-list-music">Artistas: {{music.artistas[0]}}</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" *ngIf="visualizaColocacaoLogoSpotify" rowspan="1">
+      <img src="assets/imagens/spotify-logo.png" alt="" style="	max-width:50%; height:auto;">
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
-<mat-grid-list cols="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
-  <mat-grid-tile colspan="1" rowspan="1" class="container-colocacao container">
-    <div style="width: 100%; display: flex; justify-content: flex-end;">
-      <span class="text-list-music colocacao">1</span>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1" class="container-thumbnail container">
-    <img src="{{top5Music[0].thumbnail}}" alt="" >
-  </mat-grid-tile>
-  <mat-grid-tile colspan="5" rowspan="1" class="container-infos container">
-    <div style="display: flex; flex-direction: column; width: 100%; justify-content: flex-start;">
-      <span class="titulo text-top text-list-music">{{top5Music[0].track_title}}</span>
-      <span class="sub-titulo text-top text-list-music">Artistas: {{top5Music[0].artists[0]}}</span>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="1" class="container-spotify container">
-        <img src="assets/imagens/spotify-logo.png" alt="" style="	max-width:50%; height:auto;">
-  </mat-grid-tile>
-</mat-grid-list>
+

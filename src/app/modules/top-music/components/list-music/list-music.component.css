@@ -16,3 +16,30 @@
 .sub-titulo{
   font-size: 1em;
 }
+
+.container{
+  width: 100%;
+  display: flex;
+}
+
+.container-colocacao{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-infos{
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+@media only screen and (max-width: 850px) {
+  .container-infos{
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .thumbnail{
+    height: 100%;
+  }
+}
