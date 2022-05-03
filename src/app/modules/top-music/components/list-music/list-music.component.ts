@@ -33,6 +33,7 @@ export class ListMusicComponent implements OnInit {
     this.loadingService.show();
     this.topMusicService.topMusicas().subscribe( (topMusicas:Array<TopMusicas>) =>{
       this.top5Music = topMusicas.slice(0, 5);
+      console.log(this.top5Music)
       this.loadingService.hide();
     });
   }
