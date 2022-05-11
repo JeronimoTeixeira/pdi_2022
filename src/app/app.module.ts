@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { ContactModule } from './modules/contact/contact.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ContactModule } from './modules/contact/contact.module';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
+    ToastrModule.forRoot(),
     TopMusicModule,
     ContactModule
   ],

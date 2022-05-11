@@ -2,6 +2,7 @@ import { TopMusicas } from 'src/app/shared/models/TopMusicas.model';
 import { LoadingService } from './../../../../shared/shared/services/loading.service';
 import { TopMusicService } from './../../top-music.service';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/shared/shared/services/notification.service';
 
 @Component({
   selector: 'app-list-music',
@@ -19,14 +20,15 @@ export class ListMusicComponent implements OnInit {
 
   constructor(
     private topMusicService: TopMusicService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private notificationService: NotificationService
   ) {
+    this.buscar();
+    this.onResize()
 
   }
 
   ngOnInit(): void {
-    this.onResize()
-    this.buscar();
   }
 
   buscar(){
@@ -35,6 +37,9 @@ export class ListMusicComponent implements OnInit {
       this.top5Music = topMusicas.slice(0, 5);
       console.log(this.top5Music)
       this.loadingService.hide();
+    }, err =>{
+      this.loadingService.hide();
+      this.notificationService.showError("Putz!! Algo deu errado, mas verei isso em breve!!", "Algo deu Errado");
     });
   }
 
