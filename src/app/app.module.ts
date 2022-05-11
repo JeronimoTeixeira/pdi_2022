@@ -10,6 +10,7 @@ import { MatSidenavModule } from  '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { ContactModule } from './modules/contact/contact.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    TopMusicModule
+    TopMusicModule,
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]

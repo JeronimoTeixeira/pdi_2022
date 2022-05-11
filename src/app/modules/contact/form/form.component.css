@@ -1,0 +1,12 @@
+::ng-deep .mat-form-field-label{
+  color: white !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before,::ng-deep .mat-form-field-appearance-fill .mat-form-field-ripple{
+  background-color: white !important;
+}
+
+.form {
+  display:flex;
+  flex-direction: column;
+  margin: 50px;
+}

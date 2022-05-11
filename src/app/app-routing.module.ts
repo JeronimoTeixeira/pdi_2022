@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./modules/top-music/top-music.module').then(m => m.TopMusicModule) }
+  { path: '', loadChildren: () => import('./modules/top-music/top-music.module').then(m => m.TopMusicModule) },
+  { path: 'contact', loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule)}
 
 ];
 

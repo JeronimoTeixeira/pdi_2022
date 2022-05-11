@@ -1,0 +1,28 @@
+<form class="form" [formGroup]="contact" (ngSubmit)="submit()">
+  <mat-form-field appearance="fill">
+    <mat-label color="white">E-mail</mat-label>
+    <input matInput style="color: white;" formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Mensagem</mat-label>
+    <textarea matInput style="color: white;" formControlName="message"></textarea>
+  </mat-form-field>
+  <button type="submit" mat-stroked-button style="background-color:#5e2e57; color: white">Enviar</button>
+</form>
+
+
+<!--
+<form
+  action="https://formspree.io/f/mlezajnq"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <button type="submit">Send</button>
+</form> -->
