@@ -2,7 +2,7 @@ import { TopMusicas } from 'src/app/shared/models/top-musicas.model';
 import { TopMusicService } from './../../top-music.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListMusicComponent } from './list-music.component';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoadingService } from 'src/app/shared/shared/services/loading.service';
 import { NotificationService } from 'src/app/shared/shared/services/notification.service';
@@ -18,7 +18,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 describe('ListMusicComponent', () => {
   let component: ListMusicComponent;
   let fixture: ComponentFixture<ListMusicComponent>;
-  const mockUserService = jasmine.createSpyObj("TopMusicService", ["topMusicas"]);
+  const mockTopMusicaService = jasmine.createSpyObj("TopMusicService", ["topMusicas"]);
+  const espiaoNotificationService = jasmine.createSpyObj("NotificationService", ["showError"])
+
 
   let mockMusica1 = new TopMusicas({
     position: 1,
@@ -46,16 +48,13 @@ describe('ListMusicComponent', () => {
     await TestBed.configureTestingModule({
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [
-        HttpClientTestingModule,
-        MatGridListModule
+        HttpClientTestingModule
       ],
       declarations: [ ListMusicComponent ],
       providers:[
         {
           provide: TopMusicService,
-          useValue:{
-            topMusicas: () => {return of(mockMusicas)}
-          } 
+          useValue: mockTopMusicaService
         },
         {
           provide: LoadingService,
@@ -66,16 +65,15 @@ describe('ListMusicComponent', () => {
         },
         {
           provide: NotificationService,
-          useValue: {
-            showError: ()=>{}
-          }
+          useValue: espiaoNotificationService
         }
       ]
     })
     .compileComponents();
-    mockUserService.topMusicas.and.returnValue(
+    mockTopMusicaService.topMusicas.and.returnValue(
       of(mockMusicas)
     );
+    espiaoNotificationService.showError.and.returnValue()
   });
 
   beforeEach(() => {
@@ -87,4 +85,48 @@ describe('ListMusicComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('teste função buscar', ()=>{
+
+    it('sucesso', ()=>{
+      component.buscar();
+      expect(component.top5Music).toEqual(mockMusicas)
+    });
+    
+    it('error', ()=>{
+      mockTopMusicaService.topMusicas.and.returnValue(
+        throwError("erro")
+      );
+      component.buscar();
+      expect(espiaoNotificationService.showError).toHaveBeenCalled();
+    });
+
+
+  });
+
+  describe('teste função onResize', ()=>{
+
+    it('window.innerWidth <= 850', ()=>{
+      spyOnProperty(window, 'innerWidth', 'get').and.returnValue(100);
+      component.onResize();
+      component.onResize();
+      expect(component.visualizaColocacaoLogoSpotify).toBeFalsy();
+      expect(component.breakpoint).toEqual(1);
+      expect(component.colSpanInfo).toEqual(1);
+      expect(component.rowSpanInfo).toEqual(1);
+    });
+
+    it('window.innerWidth > 850', ()=>{
+
+      spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1000);
+      component.onResize();
+      expect(component.visualizaColocacaoLogoSpotify).toBeTrue();
+      expect(component.breakpoint).toEqual(10);
+      expect(component.colSpanInfo).toEqual(5);
+      expect(component.rowSpanInfo).toEqual(1);
+    });
+
+  })
+
+
 });
