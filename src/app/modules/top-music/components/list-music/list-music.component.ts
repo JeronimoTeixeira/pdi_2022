@@ -1,4 +1,4 @@
-import { TopMusicas } from 'src/app/shared/models/TopMusicas.model';
+import { TopMusicas } from 'src/app/shared/models/top-musicas.model';
 import { LoadingService } from './../../../../shared/shared/services/loading.service';
 import { TopMusicService } from './../../top-music.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +24,7 @@ export class ListMusicComponent implements OnInit {
     private notificationService: NotificationService
   ) {
     this.buscar();
-    this.onResize()
+    this.onResize();
 
   }
 
@@ -35,7 +35,6 @@ export class ListMusicComponent implements OnInit {
     this.loadingService.show();
     this.topMusicService.topMusicas().subscribe( (topMusicas:Array<TopMusicas>) =>{
       this.top5Music = topMusicas.slice(0, 5);
-      console.log(this.top5Music)
       this.loadingService.hide();
     }, err =>{
       this.loadingService.hide();
