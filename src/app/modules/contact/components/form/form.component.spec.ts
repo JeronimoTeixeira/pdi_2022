@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { NotificationService } from 'src/app/shared/shared/services/notification.service';
-import { ContactService } from '../contact.service';
+import { ContactService } from '../../contact.service';
 
 import { FormComponent } from './form.component';
 

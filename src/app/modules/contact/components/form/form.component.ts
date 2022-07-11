@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingService } from 'src/app/shared/shared/services/loading.service';
 import { NotificationService } from 'src/app/shared/shared/services/notification.service';
-import { ContactService } from '../contact.service';
+import { ContactService } from '../../contact.service';
 
 @Component({
   selector: 'app-form',

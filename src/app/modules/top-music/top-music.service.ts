@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TopMusicas } from 'src/app/shared/models/top-musicas.model';
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TopMusicService {
   constructor(private http: HttpClient) { }
 
   topMusicas(): Observable<Array<TopMusicas>>{
-    return this.http.get("https://spotify23.p.rapidapi.com/charts/", { params: this.criarParams(), headers: this.criarHeader()})
+    return this.http.get(environment.url + "charts", { params: this.criarParams(), headers: this.criarHeader()})
     .pipe(map(this.mapTopMusicas))
   }
 
